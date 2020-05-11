@@ -23,11 +23,19 @@ from discord.ext.alternatives import asset_converter, message_eq
 
 - `asset_converter` - Implements a converter for ``Asset``.
 - `bot_send_help` - Implements `Bot.send_help`.
+- `int_map` - Implements `__int__` to return `.id`.
 - `message_eq` - Implements `Message.__eq__` (`Message == Message`)
+- `specific_error_handler` - Implements `@Command.error(Exception)`.
 - `subcommand_error` - Implements `root_parent` error handling.
 - `webhook_channel` - Implements `Webhook.move_to`.
 
 ## Changelog
+
+### 2020.05.10
+
+- Added `int_map`
+- Added `specific_error_handler`
+- `message_eq` checks for a ``Message`` instance
 
 ### 2020.05.09
 

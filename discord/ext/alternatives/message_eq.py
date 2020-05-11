@@ -13,4 +13,4 @@ False # Different IDs
 """
 
 from discord import Message
-Message.__eq__ = lambda self, other: self.id == other.id
+Message.__eq__ = lambda self, other: isinstance(other, Message) and self.id == other.id

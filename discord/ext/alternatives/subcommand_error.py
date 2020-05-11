@@ -9,7 +9,6 @@ async def profile(ctx):
 
 @profile.error
 async def profile_error(ctx, error):
-    print(error)
     if isinstance(error.original, Exception):
         await ctx.send("You have not created your profile yet. Use ;profile create command now to create your profile.")
 
