@@ -22,7 +22,7 @@ async def color(ctx):
 ```
 """
 
-from discord.ext.commands.core import Command, wrap_callback
+from discord.ext.commands.core import Command, Cog, wrap_callback
 
 async def _dispatch_error(self, ctx, error):
     ctx.command_failed = True

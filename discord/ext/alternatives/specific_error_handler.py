@@ -19,15 +19,17 @@ async def handle(ctx, error):
 import asyncio
 from discord.ext.commands import Command
 
-async def _on_error(ctx, error: Exception):
+async def _on_error(*args):  # cog?, ctx, error
+    error, ctx = args[-1], args[-2]
     cls = error.__class__
-    if cls in ctx.command._handled_errors:
-        await ctx.command._handled_errors[cls](ctx, error)
+    for exc, callback in ctx.command._handled_errors.items():
+        if exc in cls.__mro__: # walk mro to check if the handler can handle it
+            await callback(*args)
 
 def _error(self, *exceptions):
     def decorator(func):
         if not asyncio.iscoroutinefunction(func):
-            raise TypeError('The error must be a funcutine.')
+            raise TypeError('The error must be a coroutine.')
 
         if not exceptions:
             self.on_error = func
@@ -50,3 +52,16 @@ def _error(self, *exceptions):
     return decorator
 
 Command.error = _error
+
+_old_ensure_assignment = Command._ensure_assignment_on_copy
+
+def _ensure_assignment_on_copy(self, other):
+    other = _old_ensure_assignment(self, other)
+
+    try:
+        other._handled_errors = self._handled_errors
+    except AttributeError:
+        pass
+    return other
+
+Command._ensure_assignment_on_copy = _ensure_assignment_on_copy

@@ -16,7 +16,6 @@ from discord.webhook import Webhook
 _int = lambda self: self.id
 
 Hashable.__int__ = _int
-del Invite.__int__ # inherits from Hashable
 AppInfo.__int__ = _int
 AuditLogEntry.__int__ = _int
 _EmojiTag.__int__ = _int

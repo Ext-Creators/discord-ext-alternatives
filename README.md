@@ -31,6 +31,13 @@ from discord.ext.alternatives import asset_converter, message_eq
 
 ## Changelog
 
+### 2020.05.12
+
+- Added `silent_delete`
+- `int_map` no longer errors on `Invite.__int__`
+- `specific_error_handler` now works in cogs, and walks `__mro__` to check exceptions.
+- `subcommand_error` no longer errors in Cog exception propagation.
+
 ### 2020.05.10
 
 - Added `int_map`
