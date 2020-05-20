@@ -11,7 +11,7 @@ _old_delete = Message.delete
 
 async def delete(self, *, delay=None, silent=False):
     try:
-        _old_delete(delay=delay)
+        await _old_delete(delay=delay)
     except Exception:
         if not silent:
             raise
