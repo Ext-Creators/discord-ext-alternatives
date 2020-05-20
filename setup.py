@@ -3,7 +3,7 @@ from setuptools import setup
 with open('requirements.txt') as f:
     requirements = f.read().splitlines()
 
-version = '2020.05.12'
+version = '2020.05.20'
 
 with open('README.md', encoding='utf-8') as f:
     readme = f.read()
