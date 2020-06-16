@@ -23,7 +23,7 @@ async def yert(ctx, yert: Yert):
 import discord
 from discord.ext.commands import Bot, converter, Command
 
-import inspect
+from ._alternative_converters import _ALL
 
 _BUILTINS = (
     bool,
@@ -56,6 +56,7 @@ class _ConverterDict(dict):
     """
     def __init__(self):
         super().__init__(_CONVERTERS)
+        super().update(_ALL)
 
     def __setitem__(self, k, v):
         if not (issubclass(v, converter.Converter) or issubclass(v, _BUILTINS)):

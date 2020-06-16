@@ -40,6 +40,12 @@ from discord.ext.alternatives.class_commands import ClassGroup, Config
 
 ## Changelog
 
+### 2020.06.16
+
+- Updated `asset_converter` and `guild_converter` to be compatible with `converter_dict`.
+- Added `jump_url`.
+- Added `converter_dict`.
+
 ### 2020.05.20
 
 - Fixed bug with `silent_delete`.

@@ -21,6 +21,8 @@ from discord.ext.commands import converter, Context, errors, Command
 from inspect import Parameter
 from discord import Asset
 
+from ._alternative_converters import _ALL
+
 # Basic Asset Converter
 
 class _AssetConverter(converter.Converter):
@@ -31,6 +33,8 @@ class _AssetConverter(converter.Converter):
         raise errors.BadArgument('No image found!')
 
 converter.AssetConverter = _AssetConverter
+
+_ALL[Asset] = _AssetConverter
 
 Asset.__str__ = lambda s: '' if s._url is None else (s._url if s._url.startswith('http') else s.BASE + s._url)
 
@@ -50,14 +54,6 @@ Asset.read = _read
 _old_transform = Command.transform
 
 def _transform(self, ctx, param):
-    # we should add converter_dict compatibility in here
-    try:
-        ctx.bot.converters[Asset]
-    except AttributeError:
-        pass
-    except KeyError:
-        ctx.bot.converters[Asset] = converter.AssetConverter
-
     if param.annotation is Asset and param.default is param.empty:
         if ctx.message.attachments:
             default = Asset(ctx.bot._connection, ctx.message.attachments[0].url)

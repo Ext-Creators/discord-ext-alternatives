@@ -12,6 +12,8 @@ async def test(ctx, server: Guild):
 from discord.ext.commands import BadArgument, converter, Context
 from discord import Guild, utils
 
+from ._alternative_converters import _ALL
+
 # Basic Guild Converter
 
 class _GuildConverter(converter.IDConverter):
@@ -32,3 +34,4 @@ class _GuildConverter(converter.IDConverter):
         return result
 
 converter.GuildConverter = _GuildConverter
+_ALL[Guild] = _GuildConverter
