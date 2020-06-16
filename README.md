@@ -27,6 +27,7 @@ from discord.ext.alternatives.class_commands import ClassGroup, Config
 - `bot_send_help` - Implements `Bot.send_help`.
 - `guild_converter` - Implements a converter for ``Guild``.
 - `int_map` - Implements `__int__` to return `.id`.
+- `jump_url` - Implements `Guild.jump_url` and `abc.Messagable.jump_url`.
 - `message_eq` - Implements `Message.__eq__` (`Message == Message`).
 - `silent_delete` - Implements a `silent` keyword argument for `Message.delete`.
 - `specific_error_handler` - Implements `@Command.error(Exception)`.
