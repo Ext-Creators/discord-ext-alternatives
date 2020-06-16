@@ -50,6 +50,14 @@ Asset.read = _read
 _old_transform = Command.transform
 
 def _transform(self, ctx, param):
+    # we should add converter_dict compatibility in here
+    try:
+        ctx.bot.converters[Asset]
+    except AttributeError:
+        pass
+    except KeyError:
+        ctx.bot.converters[Asset] = converter.AssetConverter
+
     if param.annotation is Asset and param.default is param.empty:
         if ctx.message.attachments:
             default = Asset(ctx.bot._connection, ctx.message.attachments[0].url)

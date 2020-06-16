@@ -25,6 +25,7 @@ from discord.ext.alternatives.class_commands import ClassGroup, Config
 
 - `asset_converter` - Implements a converter for ``Asset``.
 - `bot_send_help` - Implements `Bot.send_help`.
+- `converter_dict` - Implements `Bot.converters`.
 - `guild_converter` - Implements a converter for ``Guild``.
 - `int_map` - Implements `__int__` to return `.id`.
 - `message_eq` - Implements `Message.__eq__` (`Message == Message`).
@@ -34,7 +35,7 @@ from discord.ext.alternatives.class_commands import ClassGroup, Config
 - `webhook_channel` - Implements `Webhook.move_to`.
 
 #### Standalone
-- `class_command` - Implements a way to use classes and functions as commands.
+- `class_commands` - Implements a way to use classes and functions as commands.
 
 ## Changelog
 
