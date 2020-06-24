@@ -26,9 +26,11 @@ from discord.ext.alternatives.class_commands import ClassGroup, Config
 - `asset_converter` - Implements a converter for ``Asset``.
 - `bot_send_help` - Implements `Bot.send_help`.
 - `converter_dict` - Implements `Bot.converters`.
+- `dict_converter` - Implements `**kwargs` mapping for command arguments.
 - `guild_converter` - Implements a converter for ``Guild``.
 - `int_map` - Implements `__int__` to return `.id`.
 - `jump_url` - Implements `Guild.jump_url` and `abc.Messagable.jump_url`.
+- `material_colours` - Implements [material.io](https://material.io/resources/color/) shade 400's colours.
 - `message_eq` - Implements `Message.__eq__` (`Message == Message`).
 - `silent_delete` - Implements a `silent` keyword argument for `Message.delete`.
 - `specific_error_handler` - Implements `@Command.error(Exception)`.
