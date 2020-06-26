@@ -20,6 +20,7 @@ async def test(ctx, image: Asset):
 from discord.ext.commands import converter, Context, errors, Command
 from inspect import Parameter
 from discord import Asset
+import typing
 
 from ._alternative_converters import _ALL
 
@@ -57,10 +58,10 @@ def _transform(self, ctx, param):
     if param.annotation is Asset and param.default is param.empty:
         if ctx.message.attachments:
             default = Asset(ctx.bot._connection, ctx.message.attachments[0].url)
+            param = Parameter(param.name, param.kind, default=default, annotation=typing.Optional[param.annotation])
         else:
             default = Asset(ctx.bot._connection, '')
-
-        param = Parameter(param.name, param.kind, default=default, annotation=param.annotation)
+            param = Parameter(param.name, param.kind, default=default, annotation=param.annotation)
     
     return _old_transform(self, ctx, param)
 
