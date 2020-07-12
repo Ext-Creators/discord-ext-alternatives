@@ -23,5 +23,5 @@ from discord.colour import Colour
 
 for shade, colours in MDIO_COLOURS.items():
     for name, value in colours.items():
-        delegate = lambda cls: cls(value)
+        delegate = lambda cls=cls: cls(value)
         setattr(Colour, "material_%s_%s" % (shade, name), classmethod(delegate))
