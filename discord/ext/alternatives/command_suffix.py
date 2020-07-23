@@ -26,6 +26,11 @@ async def ping(ctx):
 async def hello(ctx):
     await ctx.send('Hello! I\'m a bot with command suffixes!')
 ```
+
+'hello!' --> 'Hello! I'm a bot with command suffixes!'
+'say! this is neat' --> 'You said "this is neat" with the suffix `!`'
+'!say this is neat' --> 'You said "this is neat" with the prefix `!`'
+'!say! this is neat' --> No reply
 """
 
 
