@@ -36,7 +36,8 @@ class InlineMeta(type):
 
         new_cls.__inline_commands__ = list(cmds.values())
         return new_cls
-
+    
+    @property
     def qualified_name(cls):
         # for the default help command, since the bot is acting as a cog
         return 'No Category'
