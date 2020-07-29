@@ -10,7 +10,7 @@ from discord.ext.alternatives.ext.menus import remove_reaction
 
 ## Available Experiments
 
-### .menus
+### `.menus`
 
 - `remove_reaction` - Adds support for automatically removing reactions on menus.
 
