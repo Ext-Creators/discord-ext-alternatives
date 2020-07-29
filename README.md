@@ -45,7 +45,7 @@ from discord.ext.alternatives.class_commands import ClassGroup, Config
 
 ## Extension Experiments
 
-[Extension experiments can be found in the ext/ directory.](ext/README.md)
+[Extension experiments can be found in the `ext/` directory.](discord/ext/alternatives/ext/README.md)
 
 ## Changelog
 
