@@ -25,6 +25,7 @@ from discord.ext.alternatives.class_commands import ClassGroup, Config
 
 - `asset_converter` - Implements a converter for ``Asset``.
 - `bot_send_help` - Implements `Bot.send_help`.
+- `command_suffix` - Implements `Bot.command_suffix` and `Context.suffix`.
 - `command_piping` - Implements piping for `return` in command callbacks
 - `converter_dict` - Implements `Bot.converters`.
 - `dict_converter` - Implements `**kwargs` mapping for command arguments.
