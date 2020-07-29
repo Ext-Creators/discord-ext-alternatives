@@ -35,6 +35,7 @@ from discord.ext.alternatives.class_commands import ClassGroup, Config
 - `silent_delete` - Implements a `silent` keyword argument for `Message.delete`.
 - `specific_error_handler` - Implements `@Command.error(Exception)`.
 - `subcommand_error` - Implements `root_parent` error handling.
+- `typed_events` - Implements typed events for `Client`/`Bot`.
 - `webhook_channel` - Implements `Webhook.move_to`.
 
 #### Standalone
