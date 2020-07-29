@@ -143,7 +143,7 @@ async def _parse_arguments(self, ctx):
         elif param.kind == param.VAR_KEYWORD:
             # we have received **kwargs
             annotation = param.annotation
-            if annotation == inspect.Parameter.empty or annotation is dict:
+            if annotation == param.empty or annotation is dict:
                 annotation = Dict[str, str]  # default to {str: str}
 
             key_converter = annotation.__args__[0]
