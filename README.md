@@ -43,6 +43,10 @@ from discord.ext.alternatives.class_commands import ClassGroup, Config
 #### Standalone
 - `class_commands` - Implements a way to use classes and functions as commands.
 
+## Extension Experiments
+
+[Extension experiments can be found in the ext/ directory.](ext/README.md)
+
 ## Changelog
 
 ### 2020.06.16
