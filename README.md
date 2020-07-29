@@ -28,6 +28,7 @@ from discord.ext.alternatives.class_commands import ClassGroup, Config
 - `converter_dict` - Implements `Bot.converters`.
 - `dict_converter` - Implements `**kwargs` mapping for command arguments.
 - `guild_converter` - Implements a converter for ``Guild``.
+- `inline_bot_commands` - Implements support for commands directly defined in a `Bot` subclass.
 - `int_map` - Implements `__int__` to return `.id`.
 - `jump_url` - Implements `Guild.jump_url` and `abc.Messagable.jump_url`.
 - `material_colours` - Implements [material.io](https://material.io/resources/color/) shade 400's colours.
