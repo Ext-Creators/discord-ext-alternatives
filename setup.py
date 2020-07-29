@@ -14,7 +14,7 @@ setup(
     python_requires='>=3.6.0',
     url='https://github.com/NCPlayz/discord-ext-alternatives',
     version=version,
-    packages=['discord/ext/alternatives'],
+    packages=['discord/ext/alternatives', 'discord/ext/alternatives/ext/menus'],
     license='MIT',
     description='Enable some experimental features for discord.py.',
     long_description=readme,
