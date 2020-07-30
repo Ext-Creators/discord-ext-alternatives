@@ -42,26 +42,22 @@ Available Experiments
 - ``int_map`` - Implements ``__int__`` to return ``.id``.
 - ``jump_url`` - Implements ``Guild.jump_url`` and ``abc.Messagable.jump_url``.
 - ``material_colours`` - Implements `material.io <https://material.io/resources/color/>`_ shade 400's colours.
+- ``menus_remove_reaction`` - Adds support for automatically removing reactions on menus.
 - ``message_eq`` - Implements ``Message.__eq__`` (``Message == Message``).
 - ``silent_delete`` - Implements a ``silent`` keyword argument for ``Message.delete``.
 - ``specific_error_handler`` - Implements ``@Command.error(Exception)``.
 - ``subcommand_error`` - Implements ``root_parent`` error handling.
 - ``webhook_channel`` - Implements ``Webhook.move_to``.
 
-.. |package| image:: https://img.shields.io/pypi/v/discord-ext-alternatives.svg
-.. |versions| image:: https://img.shields.io/pypi/pyversions/discord-ext-alternatives.svg
-.. |dependencies| image:: https://img.shields.io/librariesio/github/NCPlayz/discord-ext-alternatives.svg
-.. |license| image:: https://img.shields.io/pypi/l/discord-ext-alternatives.svg
-.. |cloned| image:: https://img.shields.io/pypi/dm/discord-ext-alternatives.svg
-
 Standalone
 ----------
 
 -  ``class_commands`` - Implements a way to use classes and functions as commands.
 
-Extension Experiments
----------------------
-
-`Extension experiments can be found in the \`ext/\` directory.`_
-
 .. _Extension experiments can be found in the `ext/` directory.: discord/ext/alternatives/ext/README.rst
+
+.. |package| image:: https://img.shields.io/pypi/v/discord-ext-alternatives.svg
+.. |versions| image:: https://img.shields.io/pypi/pyversions/discord-ext-alternatives.svg
+.. |dependencies| image:: https://img.shields.io/librariesio/github/NCPlayz/discord-ext-alternatives.svg
+.. |license| image:: https://img.shields.io/pypi/l/discord-ext-alternatives.svg
+.. |cloned| image:: https://img.shields.io/pypi/dm/discord-ext-alternatives.svg

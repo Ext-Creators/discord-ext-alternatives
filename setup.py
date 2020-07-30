@@ -13,11 +13,11 @@ with open("README.rst", encoding="utf-8") as f:
 
 setup(
     name="discord-ext-alternatives",
-    author="Ext-Creators",
+    author="NCPlayz",
     python_requires=">=3.6.0",
     url="https://github.com/Ext-Creators/discord-ext-alternatives",
     version=version,
-    packages=["discord.ext.alternatives", "discord.ext.alternatives.ext.menus"],
+    packages=["discord.ext.alternatives"],
     license="Apache Software License",
     description="Patches some additional/alternative features into discord.py.",
     long_description=readme,
