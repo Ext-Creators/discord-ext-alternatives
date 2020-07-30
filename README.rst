@@ -64,4 +64,4 @@ Extension Experiments
 
 `Extension experiments can be found in the \`ext/\` directory.`_
 
-.. _Extension experiments can be found in the `ext/` directory.: discord/ext/alternatives/ext/README.md
+.. _Extension experiments can be found in the `ext/` directory.: discord/ext/alternatives/ext/README.rst

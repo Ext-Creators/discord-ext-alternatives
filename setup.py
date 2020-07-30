@@ -15,7 +15,7 @@ setup(
     name="discord-ext-alternatives",
     author="Ext-Creators",
     python_requires=">=3.6.0",
-    url="https://github.com/Ext-Creators/alternatives",
+    url="https://github.com/Ext-Creators/discord-ext-alternatives",
     version=version,
     packages=["discord.ext.alternatives", "discord.ext.alternatives.ext.menus"],
     license="Apache Software License",
