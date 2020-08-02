@@ -58,6 +58,6 @@ Standalone
 
 .. |package| image:: https://img.shields.io/pypi/v/discord-ext-alternatives.svg
 .. |versions| image:: https://img.shields.io/pypi/pyversions/discord-ext-alternatives.svg
-.. |dependencies| image:: https://img.shields.io/librariesio/github/NCPlayz/discord-ext-alternatives.svg
+.. |dependencies| image:: https://img.shields.io/librariesio/github/Ext-Creators/discord-ext-alternatives
 .. |license| image:: https://img.shields.io/pypi/l/discord-ext-alternatives.svg
 .. |cloned| image:: https://img.shields.io/pypi/dm/discord-ext-alternatives.svg
