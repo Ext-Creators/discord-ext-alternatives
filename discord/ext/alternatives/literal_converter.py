@@ -1,14 +1,11 @@
-from typing import Literal, get_args
+from typing import Literal, get_args, get_origin
 from discord.ext.commands import Command
 from discord.ext.commands.errors import ConversionError, BadArgument
 
 _old_actual_conversion = Command._actual_conversion
 
 async def _actual_conversion(self, ctx, converter, argument, param):
-    try:
-        origin = converter.__origin__
-    except AttributeError:
-        origin = None
+    origin = get_origin(converter)
 
     if origin is Literal:
         items = get_args(converter)
