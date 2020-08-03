@@ -23,7 +23,7 @@ async def yert(ctx, yert: Yert):
 import discord
 from discord.ext.commands import Bot, converter, Command
 
-from ._alternative_converters import _ALL
+from ._common import _ALL
 
 _BUILTINS = (
     bool,
