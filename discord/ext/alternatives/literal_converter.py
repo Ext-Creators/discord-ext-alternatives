@@ -1,6 +1,6 @@
 from typing import Literal, get_args
 from discord.ext.commands import Command
-from discord.ext.commands.errors import ConversionError
+from discord.ext.commands.errors import ConversionError, BadArgument
 
 _old_actual_conversion = Command._actual_conversion
 
@@ -17,7 +17,7 @@ async def _actual_conversion(self, ctx, converter, argument, param):
             if argument in items:
                 return argument
                 
-            raise commands.BadArgument(f"Expected literal: one of {list(map(repr, self.literals))}")
+            raise BadArgument(f"Expected literal: one of {list(map(repr, items))}")
         elif all(i for i in items if not isinstance(i, str)):
             ret = await _old_actual_conversion(self, ctx, type(items[0]), argument, param)
             return ret in items
