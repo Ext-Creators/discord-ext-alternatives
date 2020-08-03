@@ -19,7 +19,7 @@ async def test(ctx, image: Asset):
 
 from discord.ext.commands import converter, Context, errors, Command
 from inspect import Parameter
-from discord import Asset
+from discord import Asset, DiscordException
 import typing
 
 from ._common import _ALL
