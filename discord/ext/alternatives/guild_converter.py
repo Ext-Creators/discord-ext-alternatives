@@ -12,7 +12,7 @@ async def test(ctx, server: Guild):
 from discord.ext.commands import BadArgument, converter, Context
 from discord import Guild, utils
 
-from ._alternative_converters import _ALL
+from ._common import _ALL
 
 # Basic Guild Converter
 

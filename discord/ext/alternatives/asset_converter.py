@@ -22,7 +22,7 @@ from inspect import Parameter
 from discord import Asset
 import typing
 
-from ._alternative_converters import _ALL
+from ._common import _ALL
 
 # Basic Asset Converter
 
