@@ -20,7 +20,7 @@ bot.run(token)
 ```
 """
 
-from discord.ext.commands import bot
+from discord.ext import commands
 
 
 class InlineMeta(type):
@@ -43,7 +43,7 @@ class InlineMeta(type):
         return 'No Category'
 
 
-class BotBase(bot.BotBase, metaclass=InlineMeta):
+class BotBase(commands.bot.BotBase, metaclass=InlineMeta):
     def __new__(cls, *args, **kwargs):
         self = super().__new__(cls)
 
@@ -75,4 +75,4 @@ class BotBase(bot.BotBase, metaclass=InlineMeta):
             self.add_command(command)
 
 
-bot.BotBase = BotBase
+commands.bot.BotBase = BotBase

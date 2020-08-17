@@ -21,7 +21,8 @@ async def yert(ctx, yert: Yert):
 ```
 """
 import discord
-from discord.ext.commands import bot, converter, Command
+from discord.ext import commands
+from discord.ext.commands import converter, Command
 
 from ._common import _ALL
 
@@ -71,7 +72,7 @@ class _ConverterDict(dict):
 
 _GLOBAL_CONVERTER_DICT = _ConverterDict()
 
-bot.BotBase.converters = _GLOBAL_CONVERTER_DICT
+commands.bot.BotBase.converters = _GLOBAL_CONVERTER_DICT
 
 def _get_converter(self, param):
     obj = param.annotation
