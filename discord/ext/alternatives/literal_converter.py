@@ -1,5 +1,6 @@
 from typing import Literal, get_args
 from discord.ext.commands.errors import ConversionError
+from discord.ext.commands import Command
 
 _old_actual_conversion = Command._actual_conversion
 
