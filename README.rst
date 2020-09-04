@@ -43,7 +43,6 @@ Available Experiments
 - ``jump_url`` - Implements ``Guild.jump_url`` and ``abc.Messagable.jump_url``.
 - ``material_colours`` - Implements `material.io <https://material.io/resources/color/>`_ shade 400's colours.
 - ``menus_remove_reaction`` - Adds support for automatically removing reactions on menus.
-- ``message_eq`` - Implements ``Message.__eq__`` (``Message == Message``).
 - ``silent_delete`` - Implements a ``silent`` keyword argument for ``Message.delete``.
 - ``specific_error_handler`` - Implements ``@Command.error(Exception)``.
 - ``subcommand_error`` - Implements ``root_parent`` error handling.
