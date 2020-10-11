@@ -91,7 +91,7 @@ class Check:
         return Both(self.predicate, other if isinstance(other, CheckOp) else other.predicate)
 
 commands.core.check = CheckDecorator
-
+commands.check = CheckDecorator
 
 class Only:
     def __init__(self, first: Check):
