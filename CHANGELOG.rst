@@ -1,6 +1,17 @@
 Changelog
 =========
 
+.. _id_20201011:
+
+``2020.10.11``
+--------------
+
+- Added ``binary_checks``.
+- Add a ``py_allow`` function for restricting Python versions.
+- Fix issues with `literal_converter`
+- Fix a name error with ``converter_dict``
+- Simplify ``converter_dict`` to work with ``typing.Union``
+
 .. _id_20200730:
 
 ``2020.07.30``

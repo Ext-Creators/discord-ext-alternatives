@@ -14,7 +14,7 @@
 from collections import namedtuple
 
 
-__version__ = "2020.07.30"
+__version__ = "2020.10.11"
 
 _VersionInfo = namedtuple("_VersionInfo", "major minor micro releaselevel serial")
-version_info = _VersionInfo(major=2020, minor=7, micro=30, releaselevel="stable", serial=0)
+version_info = _VersionInfo(major=2020, minor=10, micro=11, releaselevel="stable", serial=0)

@@ -27,7 +27,9 @@ async def no(ctx):
 """
 from discord.ext import commands
 import inspect
+from ._common import py_allow
 
+py_allow(3, 9, 0)
 
 class CheckDecorator:
     def __init__(self, predicate):

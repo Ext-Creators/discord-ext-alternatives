@@ -33,6 +33,7 @@ Available Experiments
 
 - ``asset_converter`` - Implements a converter for ``Asset``.
 - ``bot_send_help`` - Implements ``Bot.send_help``.
+- ``binary_checks`` - Implements `OR`, `AND`, `NOT` operators for command checks.
 - ``command_suffix`` - Implements ``Bot.command_suffix`` and ``Context.suffix``.
 - ``command_piping`` - Implements piping for ``return`` in command callbacks
 - ``converter_dict`` - Implements ``Bot.converters``.
