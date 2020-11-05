@@ -13,15 +13,17 @@ async def foo(ctx):
 'world!'
 """
 
+from discord.ext import commands
 
-from discord.ext.commands.core import hooked_wrapped_callback, Command
 
 async def invoke(self, ctx):
     await self.prepare(ctx)
+
     ctx.invoked_subcommand = None
-    injected = hooked_wrapped_callback(self, ctx, self.callback)
+    injected = commands.core.hooked_wrapped_callback(self, ctx, self.callback)
+
     ret = await injected(*ctx.args, **ctx.kwargs)
     if ret is not None:
         await ctx.send(ret)
 
-Command.invoke = invoke
+commands.Command.invoke = invoke

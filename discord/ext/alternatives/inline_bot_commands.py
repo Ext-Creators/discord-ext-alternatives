@@ -40,7 +40,7 @@ class InlineMeta(type):
     @property
     def qualified_name(cls):
         # for the default help command, since the bot is acting as a cog
-        return 'No Category'
+        return "No Category"
 
 
 class Bot(commands.Bot, metaclass=InlineMeta):

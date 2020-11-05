@@ -12,5 +12,7 @@ False # Different IDs
 ```
 """
 
-from discord import Message
-Message.__eq__ = lambda self, other: isinstance(other, Message) and self.id == other.id
+import discord
+
+
+discord.Message.__eq__ = lambda self, other: isinstance(other, discord.Message) and self.id == other.id

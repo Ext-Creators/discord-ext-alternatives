@@ -10,11 +10,11 @@ async def on_message(message):
 ```
 """
 
-from discord.ext.commands import view, bot, Context
+from discord.ext import commands
 
-def _send_help(self, message, *args, **kwargs):
-    ctx = kwargs.get('cls', Context)(prefix=self.user.mention, bot=self, message=message)
 
+def send_help(self, message, *args, **kwargs):
+    ctx = kwargs.get("cls", commands.Context)(prefix=self.user.mention, bot=self, message=message)
     return ctx.send_help(*args)
 
-bot.BotBase.send_help = _send_help
+commands.bot.BotBase.send_help = send_help

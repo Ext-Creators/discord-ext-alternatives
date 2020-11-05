@@ -2,24 +2,25 @@
 
 """
 
-from discord import Object, RawReactionActionEvent
-from discord.ext.menus import Menu
+import discord
+from discord.ext import menus
 
 
-_old_update = Menu.update
+_old_update = menus.Menu.update
 
 
-async def _update(self: Menu, payload: RawReactionActionEvent):
+async def update(self: menus.Menu, payload: discord.RawReactionActionEvent):
     await _old_update(self, payload)
-    if payload.event_type != 'REACTION_ADD':
+
+    if payload.event_type != "REACTION_ADD":
         return
 
-    if not self.ctx.channel.permissions_for(self.ctx.me).manage_messages:
-        if not self.ctx.channel.permissions_for(self.ctx.me).administrator:
-            return
+    permissions = self.ctx.channel.permissions_for(self.ctx.me)
+    if not (permissions.manage_messages or permissions.administrator):
+        return
 
-    await self.message.remove_reaction(payload.emoji, Object(id=payload.user_id))
+    await self.message.remove_reaction(payload.emoji, discord.Object(id=payload.user_id))
 
-_update.__doc__ = _old_update.__doc__
 
-Menu.update = _update
+update.__doc__ = old_update.__doc__
+menus.Menu.update = update

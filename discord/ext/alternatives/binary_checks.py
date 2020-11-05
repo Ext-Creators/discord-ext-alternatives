@@ -25,11 +25,15 @@ async def no(ctx):
     await ctx.send('stop this')
 ```
 """
-from discord.ext import commands
+
 import inspect
-from ._common import py_allow
+
+from discord.ext import commands
+from discord.ext.alternatives._common import py_allow
+
 
 py_allow(3, 9, 0)
+
 
 class CheckDecorator:
     def __init__(self, predicate):
@@ -39,7 +43,7 @@ class CheckDecorator:
         if isinstance(func, commands.Command):
             func.checks.append(self.check)
         else:
-            if not hasattr(func, '__commands_checks__'):
+            if not hasattr(func, "__commands_checks__"):
                 func.__commands_checks__ = []
 
             func.__commands_checks__.append(self.check)
@@ -47,7 +51,7 @@ class CheckDecorator:
         return func
     
     def __repr__(self):
-        return f'CheckDecorator<check={self.check!r}>'
+        return f"CheckDecorator<check={self.check!r}>"
     
     def __invert__(self):
         ~self.check.first
@@ -68,7 +72,7 @@ class Check:
         self.inverted = False
     
     def __repr__(self):
-        return f'Check(predicate={self.predicate!r}, inverted={self.inverted})'
+        return f"Check(predicate={self.predicate!r}, inverted={self.inverted})"
 
     async def __call__(self, *args, **kwargs):
         r = self.predicate(*args, **kwargs)
@@ -95,6 +99,7 @@ class Check:
 commands.core.check = CheckDecorator
 commands.check = CheckDecorator
 
+
 class Only:
     def __init__(self, first: Check):
         self.first = first
@@ -111,7 +116,7 @@ class Only:
             return self._call(*args, **kwargs)
     
     def __repr__(self):
-        return f'Only(first={self.first!r})'
+        return f"Only(first={self.first!r})"
 
     def __invert__(self):
         self.inverted = not self.inverted
@@ -132,7 +137,7 @@ class CheckOp:
         self.check = self
     
     def __repr__(self):
-        return f'{self.__class__.__name__}(first={self.first!r}, second={self.second!r}, inverted={self.inverted})'
+        return f"{self.__class__.__name__}(first={self.first!r}, second={self.second!r}, inverted={self.inverted})"
     
     async def _try_single(self, callback, *args, **kwargs):
         r = await callback(*args, **kwargs)

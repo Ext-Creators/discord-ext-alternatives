@@ -2,25 +2,17 @@
 to return the ``id`` attribute.
 """
 
-from discord.mixins import Hashable
-from discord.abc import User
-from discord.invite import Invite
-from discord.appinfo import AppInfo
-from discord.audit_logs import AuditLogEntry
-from discord.partial_emoji import _EmojiTag
-from discord.message import Attachment, Message
-from discord.reaction import Reaction
-from discord.team import Team
-from discord.webhook import Webhook
+import discord
+
 
 _int = lambda self: self.id
 
-Hashable.__int__ = _int
-AppInfo.__int__ = _int
-AuditLogEntry.__int__ = _int
-_EmojiTag.__int__ = _int
-Attachment.__int__ = _int
-Message.__int__ = _int
-Reaction.__int__ = _int
-Team.__int__ = _int
-Webhook.__int__ = _int
+discord.AppInfo.__int__ = _int
+discord.Attachment.__int__ = _int
+discord.AuditLogEntry.__int__ = _int
+discord.emoji._EmojiTag.__int__ = _int
+discord.mixins.Hashable.__int__ = _int
+discord.Message.__int__ = _int
+discord.Reaction.__int__ = _int
+discord.Team.__int__ = _int
+discord.Webhook.__int__ = _int
