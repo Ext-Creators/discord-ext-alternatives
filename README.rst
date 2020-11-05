@@ -43,6 +43,7 @@ Available Experiments
 - ``int_map`` - Implements ``__int__`` to return ``.id``.
 - ``jump_url`` - Implements ``Guild.jump_url`` and ``abc.Messagable.jump_url``.
 - ``material_colours`` - Implements `material.io <https://material.io/resources/color/>`_ shade 400's colours.
+- ``material_colors`` - Alias of the ``material_colours`` experiment.
 - ``menus_remove_reaction`` - Adds support for automatically removing reactions on menus.
 - ``message_eq`` - Implements ``Message.__eq__`` (``Message == Message``).
 - ``silent_delete`` - Implements a ``silent`` keyword argument for ``Message.delete``.
