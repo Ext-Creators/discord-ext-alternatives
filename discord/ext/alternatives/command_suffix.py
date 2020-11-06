@@ -57,7 +57,7 @@ class Context(commands.Context):
     async def reinvoke(self, *, call_hooks=False, restart=True):
         if self.suffix is not None:
             # since the command was invoked with a suffix,
-            # we need to make sure the view doesn"t try to skip a nonexistent prefix
+            # we need to make sure the view doesn't try to skip a nonexistent prefix
             original_prefix = self.prefix
             self.prefix = ""
 
