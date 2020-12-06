@@ -20,6 +20,8 @@ async def yert(ctx, yert: Yert):
     await ctx.send(yert)
 ```
 """
+from types import FunctionType
+
 import discord
 from discord.ext.commands import Bot, converter, Command
 
@@ -59,7 +61,7 @@ class _ConverterDict(dict):
         super().update(_ALL)
 
     def __setitem__(self, k, v):
-        if not (issubclass(v, converter.Converter) or issubclass(v, _BUILTINS)):
+        if not (isinstance(v, FunctionType) or issubclass(v, (*_BUILTINS, converter.Converter))):
             raise TypeError('Excepted value of type \'Converter\' or built-in, received %r' % v.__name__)
         super().__setitem__(k, v)
     
