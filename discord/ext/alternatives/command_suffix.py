@@ -49,16 +49,14 @@ async def hello(ctx):
 '!say! this is neat' --> No reply
 """
 
-
 import collections
 
 import discord
 from discord.ext import commands
-from discord.ext.commands.view import StringView
 
 
 def _suffix_used(suffix, content):
-    space_index = content.find(' ')
+    space_index = content.find(" ")
     suffix_index = content.find(suffix)
     return suffix_index > 0 and (space_index == -1 or suffix_index < space_index)
 
@@ -66,7 +64,7 @@ def _suffix_used(suffix, content):
 class Context(commands.Context):
     def __init__(self, **attrs):
         super().__init__(**attrs)
-        self.suffix = attrs.pop('suffix')
+        self.suffix = attrs.pop("suffix")
 
     @property
     def valid(self):
@@ -77,7 +75,7 @@ class Context(commands.Context):
             # since the command was invoked with a suffix,
             # we need to make sure the view doesn't try to skip a nonexistent prefix
             original_prefix = self.prefix
-            self.prefix = ''
+            self.prefix = ""
 
         await super().reinvoke(call_hooks=call_hooks, restart=restart)
 
@@ -86,11 +84,10 @@ class Context(commands.Context):
         except NameError:
             pass
 
-
 class BotBase(commands.bot.BotBase):
     def __init__(self, command_prefix=None, command_suffix=None, **options):
         if command_prefix is None and command_suffix is None:
-            raise ValueError('Bot must have a prefix or suffix')
+            raise ValueError("Bot must have a prefix or suffix")
 
         super().__init__(command_prefix=command_prefix, **options)
         self.command_suffix = command_suffix
@@ -98,6 +95,7 @@ class BotBase(commands.bot.BotBase):
     async def get_prefix(self, message):
         if self.command_prefix is None:
             return None
+
         return await super().get_prefix(message)
 
     async def get_suffix(self, message):
@@ -140,7 +138,7 @@ class BotBase(commands.bot.BotBase):
 
     async def get_context(self, message, *, cls=Context):
         """Defaults to check for prefix first."""
-        view = StringView(message.content)
+        view = commands.view.StringView(message.content)
         ctx = cls(prefix=None, suffix=None, view=view, bot=self, message=message)
 
         if self._skip_check(message.author.id, self.user.id):
@@ -217,7 +215,6 @@ class BotBase(commands.bot.BotBase):
         ctx.invoked_with = invoker
         ctx.command = self.all_commands.get(invoker)
         return ctx
-
 
 commands.bot.BotBase = BotBase
 commands.Context = Context
