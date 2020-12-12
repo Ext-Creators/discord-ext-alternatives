@@ -59,7 +59,7 @@ class InlineMeta(type):
         return "No Category"
 
 
-class Bot(commands.Bot, metaclass=InlineMeta):
+class BotBase(commands.bot.BotBase, metaclass=InlineMeta):
     def __new__(cls, *args, **kwargs):
         self = super().__new__(cls)
 
@@ -91,4 +91,4 @@ class Bot(commands.Bot, metaclass=InlineMeta):
             self.add_command(command)
 
 
-commands.Bot = Bot
+commands.bot.BotBase = BotBase

@@ -84,7 +84,7 @@ class Context(commands.Context):
         except NameError:
             pass
 
-class Bot(commands.Bot):
+class BotBase(commands.bot.BotBase):
     def __init__(self, command_prefix=None, command_suffix=None, **options):
         if command_prefix is None and command_suffix is None:
             raise ValueError("Bot must have a prefix or suffix")
@@ -216,5 +216,5 @@ class Bot(commands.Bot):
         ctx.command = self.all_commands.get(invoker)
         return ctx
 
-commands.Bot = Bot
+commands.bot.BotBase = BotBase
 commands.Context = Context

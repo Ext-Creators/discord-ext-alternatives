@@ -23,7 +23,8 @@ async def yert(ctx, yert: Yert):
 from types import FunctionType
 
 import discord
-from discord.ext.commands import Bot, converter, Command
+from discord.ext import commands
+from discord.ext.commands import converter, Command
 
 from ._common import _ALL
 
@@ -73,7 +74,7 @@ class _ConverterDict(dict):
 
 _GLOBAL_CONVERTER_DICT = _ConverterDict()
 
-Bot.converters = _GLOBAL_CONVERTER_DICT
+commands.bot.BotBase.converters = _GLOBAL_CONVERTER_DICT
 
 _old_actual_conversion = Command._actual_conversion
 
