@@ -33,6 +33,7 @@ Available Experiments
 
 - ``asset_converter`` - Implements a converter for ``Asset``.
 - ``bot_send_help`` - Implements ``Bot.send_help``.
+- ``binary_checks`` - Implements `OR`, `AND`, `NOT` operators for command checks.
 - ``command_suffix`` - Implements ``Bot.command_suffix`` and ``Context.suffix``.
 - ``command_piping`` - Implements piping for ``return`` in command callbacks
 - ``converter_dict`` - Implements ``Bot.converters``.
@@ -42,6 +43,7 @@ Available Experiments
 - ``int_map`` - Implements ``__int__`` to return ``.id``.
 - ``jump_url`` - Implements ``Guild.jump_url`` and ``abc.Messagable.jump_url``.
 - ``material_colours`` - Implements `material.io <https://material.io/resources/color/>`_ shade 400's colours.
+- ``material_colors`` - Alias of the ``material_colours`` experiment.
 - ``menus_remove_reaction`` - Adds support for automatically removing reactions on menus.
 - ``message_eq`` - Implements ``Message.__eq__`` (``Message == Message``).
 - ``silent_delete`` - Implements a ``silent`` keyword argument for ``Message.delete``.

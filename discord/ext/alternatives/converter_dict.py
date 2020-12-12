@@ -74,15 +74,10 @@ _GLOBAL_CONVERTER_DICT = _ConverterDict()
 
 commands.bot.BotBase.converters = _GLOBAL_CONVERTER_DICT
 
-def _get_converter(self, param):
-    obj = param.annotation
-    if obj is param.empty:
-        if param.default is not param.empty:
-            converter = _GLOBAL_CONVERTER_DICT.get(type(param.default), str)
-        else:
-            converter = str
-    else:
-        converter = _GLOBAL_CONVERTER_DICT.get(obj, obj) # fall back on its typehint if its converter isn't registered
-    return converter
+_old_actual_conversion = Command._actual_conversion
 
-Command._get_converter = _get_converter
+async def _actual_conversion(self, ctx, converter, argument, param):
+    converter = _GLOBAL_CONVERTER_DICT.get(converter, converter)
+    return await _old_actual_conversion(self, ctx, converter, argument, param)
+
+Command._actual_conversion = _actual_conversion
