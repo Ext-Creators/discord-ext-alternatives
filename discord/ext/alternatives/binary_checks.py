@@ -192,16 +192,16 @@ class Both(CheckOp):
 
 class Either(CheckOp):
     async def _call(self, *args, **kwargs):
-        fs = False
         try:
-            fs = await self._try_single(self.first, *args, **kwargs)
+            if await self._try_single(self.first, *args, **kwargs):
+                return True
         except:
             pass
 
-        ss = False
         try:
-            ss = await self._try_single(self.second, *args, **kwargs)
+            if await self._try_single(self.second, *args, **kwargs):
+                return True
         except:
             pass
 
-        return fs or ss
+        return False
