@@ -38,11 +38,9 @@ project_urls = {
 setuptools.setup(
     author="Ext-Creators",
     classifiers=classifiers,
-    description="A discord.py extension with additional and alternative features.",
+    description="A discord.py extension with additional and alternative features. Use with caution.",
     install_requires=install_requires,
     license="Apache Software License",
-    long_description=long_description,
-    long_description_content_type="text/x-rst",
     name="discord-ext-alternatives",
     packages=["discord.ext.alternatives"],
     project_urls=project_urls,
