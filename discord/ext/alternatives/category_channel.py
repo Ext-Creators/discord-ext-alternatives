@@ -23,6 +23,11 @@ Example:
 ```py
 @is_owner()
 @bot.command()
+async def by_length(ctx):
+    await ctx.channel.category.sort(key=lambda c: len(c.name))
+
+@is_owner()
+@bot.command()
 async def alphabetize(ctx):
     await ctx.channel.category.alphabetize()
 
@@ -38,6 +43,37 @@ import random
 from discord import CategoryChannel
 
 
+async def _sort(self, *, key=None, reverse=False):
+    """|coro|
+
+    Sorts the channels within the CategoryChannel, similar to Python's list.sort().
+
+    You must have the :attr:`~discord.Permissions.manage_channels` permission to
+    do this.
+
+    Parameters
+    -----------
+    key: Callable
+        A callable function to customize the sort order.
+        The supplied argument is of type ``GuildChannel``.
+    reverse: :class:`bool`
+        Whether or not to sort in descending order. False by default.
+
+    Raises
+    -------
+    Forbidden
+        You do not have permissions to sort the channels.
+    HTTPException
+        Sorting the channels failed.
+    """
+    payload = [
+        {"id": channel.id, "position": index}
+        for index, channel in enumerate(sorted(self.channels, key=key, reverse=reverse))
+    ]
+
+    await self._state.http.bulk_channel_update(self.guild.id, payload)
+
+
 async def _alphabetize(self, *, reverse=False):
     """|coro|
 
@@ -49,7 +85,7 @@ async def _alphabetize(self, *, reverse=False):
     Parameters
     -----------
     reverse: :class:`bool`
-        Whether or not to reverse the alphabetization. False by default.
+        Whether or not to alphabetize in descending order. False by default.
 
     Raises
     -------
@@ -59,14 +95,7 @@ async def _alphabetize(self, *, reverse=False):
         Alphabetizing the channels failed.
     """
 
-    payload = [
-        {"id": channel.id, "position": index}
-        for index, channel in enumerate(
-            sorted(self.channels, key=lambda c: c.name, reverse=reverse)
-        )
-    ]
-
-    await self._state.http.bulk_channel_update(self.guild.id, payload)
+    await self.sort(key=lambda c: c.name, reverse=reverse)
 
 
 async def _shuffle(self):
@@ -85,17 +114,10 @@ async def _shuffle(self):
         Shuffling the channels failed.
     """
 
-    channel_ids = [channel.id for channel in self.channels]
-    random.shuffle(channel_ids)
-
-    payload = [
-        {"id": channel_id, "position": index}
-        for index, channel_id in enumerate(channel_ids)
-    ]
-
-    await self._state.http.bulk_channel_update(self.guild.id, payload)
+    await self.sort(key=lambda _: random.random())
 
 
+CategoryChannel.sort = _sort
 CategoryChannel.alphabetise = _alphabetize
 CategoryChannel.alphabetize = _alphabetize
 CategoryChannel.shuffle = _shuffle
