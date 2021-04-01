@@ -14,13 +14,18 @@
     limitations under the License.
 """
 
-"""An experiment that allows you to shuffle the positions of channels
+"""An experiment that allows you to change the positions of channels
 in a CategoryChannel in a way that isn't quickly rate-limited.
 
 Works with TextChannels and VoiceChannels alike.
 
 Example:
 ```py
+@is_owner()
+@bot.command()
+async def alphabetize(ctx):
+    await ctx.channel.category.alphabetize()
+
 @is_owner()
 @bot.command()
 async def shuffle(ctx):
@@ -31,6 +36,37 @@ async def shuffle(ctx):
 import random
 
 from discord import CategoryChannel
+
+
+async def _alphabetize(self, *, reverse=False):
+    """|coro|
+
+    Alphabetizes the channels within the CategoryChannel.
+
+    You must have the :attr:`~discord.Permissions.manage_channels` permission to
+    do this.
+
+    Parameters
+    -----------
+    reverse: :class:`bool`
+        Whether or not to reverse the alphabetization. False by default.
+
+    Raises
+    -------
+    Forbidden
+        You do not have permissions to alphabetize the channels.
+    HTTPException
+        Alphabetizing the channels failed.
+    """
+
+    payload = [
+        {"id": channel.id, "position": index}
+        for index, channel in enumerate(
+            sorted(self.channels, key=lambda c: c.name, reverse=reverse)
+        )
+    ]
+
+    await self._state.http.bulk_channel_update(self.guild.id, payload)
 
 
 async def _shuffle(self):
@@ -60,4 +96,5 @@ async def _shuffle(self):
     await self._state.http.bulk_channel_update(self.guild.id, payload)
 
 
+CategoryChannel.alphabetize = _alphabetize
 CategoryChannel.shuffle = _shuffle
