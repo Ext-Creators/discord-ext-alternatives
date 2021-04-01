@@ -96,5 +96,6 @@ async def _shuffle(self):
     await self._state.http.bulk_channel_update(self.guild.id, payload)
 
 
+CategoryChannel.alphabetise = _alphabetize
 CategoryChannel.alphabetize = _alphabetize
 CategoryChannel.shuffle = _shuffle
