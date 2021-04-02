@@ -53,6 +53,7 @@ py_allow(3, 9, 0)
 
 class CheckDecorator:
     def __init__(self, predicate):
+        self.predicate = predicate
         self.check = Only(Check(predicate))
     
     def __call__(self, func):
