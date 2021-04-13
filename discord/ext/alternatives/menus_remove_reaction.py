@@ -38,5 +38,5 @@ async def update(self: menus.Menu, payload: discord.RawReactionActionEvent):
     await self.message.remove_reaction(payload.emoji, discord.Object(id=payload.user_id))
 
 
-update.__doc__ = old_update.__doc__
+update.__doc__ = _old_update.__doc__
 menus.Menu.update = update
