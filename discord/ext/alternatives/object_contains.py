@@ -48,8 +48,6 @@ def guild_contains(self, item):
     if isinstance(item, BaseUser):
         return item.id in self._members
 
-    if isinstance(item, Message):
-        return item.channel.id in self._channels
 
     return False
 
