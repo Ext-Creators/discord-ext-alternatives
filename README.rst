@@ -23,6 +23,7 @@
 
     <h1 align="center">discord-ext-alternatives</h1>
     <p align="center">A discord.py extension with additional and alternative features.</p>
+    <h6 align="center">Copyright 2020-present Ext-Creators</h6>
 
 
 Installation
