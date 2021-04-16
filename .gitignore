@@ -1,4 +1,7 @@
+# python
 __pycache__/
+
+# python distribution
 build/
-*.egg-info/
 dist/
+*.egg-info/
