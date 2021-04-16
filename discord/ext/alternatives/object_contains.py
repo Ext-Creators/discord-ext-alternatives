@@ -41,7 +41,7 @@ from discord.role import Role
 from discord.user import User, BaseUser
 
 
-def guild_contains(self, item):
+def _Guild__contains__(self, item):
     if hasattr(item, 'guild'):
         return item.guild == self
 
@@ -52,10 +52,10 @@ def guild_contains(self, item):
     return False
 
 
-Guild.__contains__ = guild_contains
+Guild.__contains__ = _Guild__contains__
 
 
-def role_contains(self, item):
+def _Role__contains__(self, item):
     if isinstance(item, User):
         item = self.guild._members.get(item.id)
     
@@ -65,10 +65,10 @@ def role_contains(self, item):
     return False
 
 
-Role.__contains__ = role_contains
+Role.__contains__ = _Role__contains__
 
 
-def textchannel_contains(self, item):
+def _TextChannel__contains__(self, item):
     if hasattr(item, 'channel'):
         return item.channel == self
     
@@ -81,10 +81,10 @@ def textchannel_contains(self, item):
     return False
 
 
-TextChannel.__contains__ = textchannel_contains
+TextChannel.__contains__ = _TextChannel__contains__
 
 
-def vocalguildchannel_contains(self, item):
+def _VocalGuildChannel__contains__(self, item):
     if isinstance(item, BaseUser):
         for user_id, state in self.guild._voice_states.items():
             if state.channel and state.channel.id == self.id and item.id == user_id:
@@ -93,20 +93,20 @@ def vocalguildchannel_contains(self, item):
     return False
 
 
-VocalGuildChannel.__contains__ = vocalguildchannel_contains
+VocalGuildChannel.__contains__ = _VocalGuildChannel__contains__
 
 
-def categorychannel_contains(self, item):
+def _CategoryChannel__contains__(self, item):
     if hasattr(item, 'category'):
         return item.category == self
 
     return False
 
 
-CategoryChannel.__contains__ = categorychannel_contains
+CategoryChannel.__contains__ = _CategoryChannel__contains__
 
 
-def dmchannel_contains(self, item):
+def _DMChannel__contains_(self, item):
     if hasattr(item, 'channel'):
         return item.channel == self
 
@@ -116,4 +116,4 @@ def dmchannel_contains(self, item):
     return False
 
 
-DMChannel.__contains__ = dmchannel_contains
+DMChannel.__contains__ = _DMChannel__contains_
