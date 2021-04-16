@@ -30,7 +30,7 @@ Installation
 
 .. code-block:: sh
 
-    python3 -m pip install --upgrade discord-ext-alternatives
+    pip install --upgrade discord-ext-alternatives
 
 
 Usage
