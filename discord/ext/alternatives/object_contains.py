@@ -116,4 +116,4 @@ def _DMChannel__contains_(self, item):
     return False
 
 
-DMChannel.__contains__ = _DMChannel__contains_
+DMChannel.__contains__ = _DMChannel__contains__
