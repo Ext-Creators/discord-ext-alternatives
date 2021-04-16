@@ -99,8 +99,8 @@ VocalGuildChannel.__contains__ = vocalguildchannel_contains
 
 
 def categorychannel_contains(self, item):
-    if hasattr(item, 'channel'):
-        return item.channel == self
+    if hasattr(item, 'category'):
+        return item.category == self
 
     return False
 
