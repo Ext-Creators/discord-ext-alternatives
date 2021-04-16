@@ -56,9 +56,6 @@ if match.group(3) is not None:
     except (Exception) as e:
         pass
 
-with open("discord/ext/alternatives/__init__.py") as stream:
-    version = re.search(r"^__version__\s*=\s*[\'\"]([^\'\"]*)[\'\"]", stream.read(), re.MULTILINE).group(1)
-
 setuptools.setup(
     author="Ext-Creators",
     classifiers=classifiers,
