@@ -14,10 +14,10 @@
     limitations under the License.
 """
 
-from collections import namedtuple
+import collections
 
 
-__version__ = "2021.04.13"
+_VersionInfo = collections.namedtuple("_VersionInfo", "year month day release serial")
 
-_VersionInfo = namedtuple("_VersionInfo", "major minor micro releaselevel serial")
-version_info = _VersionInfo(major=2021, minor=4, micro=13, releaselevel="stable", serial=0)
+version_info = _VersionInfo(2021, 4, 13, "final", 0)
+version = "2021.04.13"
