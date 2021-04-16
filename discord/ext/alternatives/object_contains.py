@@ -48,7 +48,6 @@ def _Guild__contains__(self, item):
     if isinstance(item, BaseUser):
         return item.id in self._members
 
-
     return False
 
 
