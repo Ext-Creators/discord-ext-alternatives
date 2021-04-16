@@ -24,10 +24,11 @@ from discord.ext import commands
 async def on_error(*args):  # cog?, ctx, error
     error, ctx = args[-1], args[-2]
     cls = error.__class__
-    
+
     for exc, callback in ctx.command._handled_errors.items():
         if exc in cls.__mro__:  # walk mro to check if the handler can handle it
             await callback(*args)
+
 
 def error(self, *exceptions):
     def decorator(func):
@@ -55,9 +56,11 @@ def error(self, *exceptions):
 
     return decorator
 
+
 commands.Command.error = error
 
 _old_ensure_assignment_on_copy = commands.Command._ensure_assignment_on_copy
+
 
 def _ensure_assignment_on_copy(self, other):
     other = _old_ensure_assignment_on_copy(self, other)
@@ -68,5 +71,6 @@ def _ensure_assignment_on_copy(self, other):
         pass
 
     return other
+
 
 commands.Command._ensure_assignment_on_copy = _ensure_assignment_on_copy

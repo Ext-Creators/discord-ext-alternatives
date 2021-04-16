@@ -26,27 +26,32 @@ from ._common import _ALL
 
 # Basic Asset Converter
 
+
 class _AssetConverter(converter.Converter):
     async def convert(self, ctx: Context, argument: str):
-        if argument.startswith('http'):
+        if argument.startswith("http"):
             return Asset(ctx.bot._connection, argument)
-        
-        raise errors.BadArgument('No image found!')
+
+        raise errors.BadArgument("No image found!")
+
 
 converter.AssetConverter = _AssetConverter
 
 _ALL[Asset] = _AssetConverter
 
-Asset.__str__ = lambda s: '' if s._url is None else (s._url if s._url.startswith('http') else s.BASE + s._url)
+Asset.__str__ = (
+    lambda s: '' if s._url is None else (s._url if s._url.startswith('http') else s.BASE + s._url)
+)
 
 async def _read(self):
     if not self._url:
-        raise DiscordException('Invalid asset (no URL provided)')
+        raise DiscordException("Invalid asset (no URL provided)")
 
     if self._state is None:
-        raise DiscordException('Invalid state (no ConnectionState provided)')
+        raise DiscordException("Invalid state (no ConnectionState provided)")
 
     return await self._state.http.get_from_cdn(str(self))
+
 
 Asset.read = _read
 
@@ -54,15 +59,22 @@ Asset.read = _read
 
 _old_transform = Command.transform
 
+
 def _transform(self, ctx, param):
     if param.annotation is Asset and param.default is param.empty:
         if ctx.message.attachments:
             default = Asset(ctx.bot._connection, ctx.message.attachments[0].url)
-            param = Parameter(param.name, param.kind, default=default, annotation=typing.Optional[param.annotation])
+            param = Parameter(
+                param.name,
+                param.kind,
+                default=default,
+                annotation=typing.Optional[param.annotation]
+            )
         else:
-            default = Asset(ctx.bot._connection, '')
+            default = Asset(ctx.bot._connection, "")
             param = Parameter(param.name, param.kind, default=default, annotation=param.annotation)
     
     return _old_transform(self, ctx, param)
+
 
 Command.transform = _transform

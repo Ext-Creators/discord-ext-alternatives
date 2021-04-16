@@ -62,4 +62,5 @@ async def dispatch_error(self, ctx, error):
     finally:
         ctx.bot.dispatch("command_error", ctx, error)
 
+
 commands.Command.dispatch_error = dispatch_error

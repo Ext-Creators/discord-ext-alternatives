@@ -8,6 +8,7 @@ def wait_for(self, event, *, check=None, timeout=None):
     actual_wait_for = self._state.dispatch.__self__.wait_for
 
     if check is None:
+
         def check(*args):
             return True
 
@@ -21,5 +22,6 @@ def wait_for(self, event, *, check=None, timeout=None):
                     return check(*args)
 
     return actual_wait_for(event, check=actual_check, timeout=timeout)
+
 
 discord.abc.Messageable.wait_for = wait_for

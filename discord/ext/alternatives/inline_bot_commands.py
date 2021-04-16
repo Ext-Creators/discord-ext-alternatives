@@ -36,7 +36,7 @@ class InlineMeta(type):
 
         new_cls.__inline_commands__ = list(cmds.values())
         return new_cls
-    
+
     @property
     def qualified_name(cls):
         # for the default help command, since the bot is acting as a cog
@@ -49,10 +49,7 @@ class BotBase(commands.bot.BotBase, metaclass=InlineMeta):
 
         self.__inline_commands__ = tuple(c.copy() for c in cls.__inline_commands__)
 
-        lookup = {
-            cmd.qualified_name: cmd
-            for cmd in self.__inline_commands__
-        }
+        lookup = {cmd.qualified_name: cmd for cmd in self.__inline_commands__}
 
         # Update the Command instances dynamically as well
         for command in self.__inline_commands__:

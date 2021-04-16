@@ -16,6 +16,7 @@ from ._common import _ALL
 
 # Basic Guild Converter
 
+
 class _GuildConverter(converter.IDConverter):
     async def convert(self, ctx: Context, argument: str):
         bot = ctx.bot
@@ -32,6 +33,7 @@ class _GuildConverter(converter.IDConverter):
         if result is None:
             raise BadArgument('Guild "{}" not found'.format(argument))
         return result
+
 
 converter.GuildConverter = _GuildConverter
 _ALL[Guild] = _GuildConverter

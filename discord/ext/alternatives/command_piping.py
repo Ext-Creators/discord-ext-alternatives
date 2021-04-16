@@ -26,4 +26,5 @@ async def invoke(self, ctx):
     if ret is not None:
         await ctx.send(ret)
 
+
 commands.Command.invoke = invoke

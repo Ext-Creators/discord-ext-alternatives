@@ -61,18 +61,20 @@ class ClassGroup(commands.Group):
             elif inspect.iscoroutinefunction(attr):
                 self.add_command(commands.Command(attr))
 
-class Config():
-    def __init__(self, *, 
-                 invoke_without_command: bool=False, 
-                 case_insensitive: bool=False,
-                 help: str="",
-                 brief: str="",
-                 usage: str="",
-                 aliases: list=[],
-                 checks: list=[],
-                 description: str="",
-                 hidden: bool=False,
-        ):
+class Config:
+    def __init__(
+        self,
+        *, 
+        invoke_without_command: bool=False, 
+        case_insensitive: bool=False,
+        help: str="",
+        brief: str="",
+        usage: str="",
+        aliases: list=[],
+        checks: list=[],
+        description: str="",
+        hidden: bool=False,
+    ):
         self.invoke_without_command = invoke_without_command
         self.case_insensitive = case_insensitive
         self.help = help

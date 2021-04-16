@@ -42,7 +42,7 @@ from discord.user import User, BaseUser
 
 
 def _Guild__contains__(self, item):
-    if hasattr(item, 'guild'):
+    if hasattr(item, "guild"):
         return item.guild == self
 
     if isinstance(item, BaseUser):
@@ -57,7 +57,7 @@ Guild.__contains__ = _Guild__contains__
 def _Role__contains__(self, item):
     if isinstance(item, User):
         item = self.guild._members.get(item.id)
-    
+
     if isinstance(item, Member):
         return item._roles.has(self.id)
 
@@ -68,15 +68,15 @@ Role.__contains__ = _Role__contains__
 
 
 def _TextChannel__contains__(self, item):
-    if hasattr(item, 'channel'):
+    if hasattr(item, "channel"):
         return item.channel == self
-    
+
     if isinstance(item, User):
         item = self.guild._members.get(item.id)
 
     if isinstance(item, Member):
         return self.permissions_for(item).read_messages
-    
+
     return False
 
 
@@ -94,7 +94,7 @@ VocalGuildChannel.__contains__ = _VocalGuildChannel__contains__
 
 
 def _CategoryChannel__contains__(self, item):
-    if hasattr(item, 'category'):
+    if hasattr(item, "category"):
         return item.category == self
 
     return False
@@ -104,7 +104,7 @@ CategoryChannel.__contains__ = _CategoryChannel__contains__
 
 
 def _DMChannel__contains__(self, item):
-    if hasattr(item, 'channel'):
+    if hasattr(item, "channel"):
         return item.channel == self
 
     if isinstance(item, BaseUser):

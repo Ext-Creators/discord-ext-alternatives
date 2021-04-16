@@ -48,11 +48,11 @@ class DictStringView(_view.StringView):
                 if is_quoted:
                     # unexpected EOF
                     raise _view.ExpectedClosingQuoteError(close_quote)
-                return ''.join(result)
+                return "".join(result)
 
             # currently we accept strings in the format of "hello world"
             # to embed a quote inside the string you must escape it: "a \"world\""
-            if current == '\\':
+            if current == "\\":
                 next_char = self.get()
                 if not next_char:
                     # string ends with \ and no character after it
@@ -60,7 +60,7 @@ class DictStringView(_view.StringView):
                         # if we're quoted then we're expecting a closing quote
                         raise _view.ExpectedClosingQuoteError(close_quote)
                     # if we aren't then we just let it through
-                    return ''.join(result)
+                    return "".join(result)
 
                 if next_char in _escaped_quotes:
                     # escaped quote
@@ -81,16 +81,17 @@ class DictStringView(_view.StringView):
             # closing quote
             if is_quoted and current == close_quote:
                 next_char = self.get()
-                valid_eof = not next_char or next_char.isspace() or next_char == '='  # all this for that
+                # all this for that
+                valid_eof = not next_char or next_char.isspace() or next_char == '='
                 if not valid_eof:
                     raise _view.InvalidEndOfQuotedStringError(next_char)
 
                 # we're quoted so it's okay
-                return ''.join(result)
+                return "".join(result)
 
             if current.isspace() and not is_quoted:
                 # end of word found
-                return ''.join(result)
+                return "".join(result)
 
             result.append(current)
 
@@ -160,22 +161,23 @@ async def _parse_arguments(self, ctx):
                     kv_list.append(kv.strip())
             kv_pairs = []
             for current in kv_list:
-                if current[0] == '=':
+                if current[0] == "=":
                     kv_pairs.remove([previous])
                     kv_pairs.append([previous, current[1:]])
                 else:
-                    kv_pairs.append(current.split('='))
+                    kv_pairs.append(current.split("="))
                 previous = current
             kwargs[name] = {
-                await self.do_conversion(ctx, key_converter, key, param):
-                    await self.do_conversion(ctx, value_converter, value, param)
+                await self.do_conversion(ctx, key_converter, key, param): await self.do_conversion(
+                    ctx, value_converter, value, param
+                )
                 for (key, value) in kv_pairs
             }
             break
 
     if not self.ignore_extra:
         if not view.eof:
-            raise TooManyArguments('Too many arguments passed to ' + self.qualified_name)
+            raise TooManyArguments("Too many arguments passed to " + self.qualified_name)
 
 
 Command._parse_arguments = _parse_arguments

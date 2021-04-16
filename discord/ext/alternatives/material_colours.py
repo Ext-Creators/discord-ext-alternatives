@@ -3,22 +3,22 @@ from discord.colour import Colour
 
 MDIO_COLOURS = {
     "400": {
-        "red": 0xef534e,
-        "pink": 0xec407e,
-        "purple": 0xab47bc,
-        "deep_purple": 0x7e56c1,
-        "indigo": 0x5c6bc0,
-        "blue": 0x42a5f5,
-        "light_blue": 0x29b6f6,
-        "cyan": 0x26c6da,
-        "teal": 0x26a69a,
-        "green": 0x66bb6a,
-        "light_green": 0x9ccc65,
-        "lime": 0xd4e157,
-        "yellow": 0xffee58,
-        "amber": 0xffca28,
-        "orange": 0xffa726,
-        "deep_orange": 0xff7043,
+        "red": 0xEF534E,
+        "pink": 0xEC407E,
+        "purple": 0xAB47BC,
+        "deep_purple": 0x7E56C1,
+        "indigo": 0x5C6BC0,
+        "blue": 0x42A5F5,
+        "light_blue": 0x29B6F6,
+        "cyan": 0x26C6DA,
+        "teal": 0x26A69A,
+        "green": 0x66BB6A,
+        "light_green": 0x9CCC65,
+        "lime": 0xD4E157,
+        "yellow": 0xFFEE58,
+        "amber": 0xFFCA28,
+        "orange": 0xFFA726,
+        "deep_orange": 0xFF7043,
     }
 }
 

@@ -15,4 +15,4 @@ False # Different IDs
 import discord
 
 
-discord.Message.__eq__ = lambda self, other: isinstance(other, discord.Message) and self.id == other.id
+discord.Message.__eq__ = lambda s, o: isinstance(o, discord.Message) and s.id == o.id

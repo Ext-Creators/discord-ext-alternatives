@@ -68,6 +68,7 @@ class Context(commands.Context):
         except NameError:
             pass
 
+
 class BotBase(commands.bot.BotBase):
     def __init__(self, command_prefix=None, command_suffix=None, **options):
         if command_prefix is None and command_suffix is None:
@@ -112,8 +113,10 @@ class BotBase(commands.bot.BotBase):
                 if isinstance(ret, collections.abc.Iterable):
                     raise
 
-                raise TypeError("command_suffix must be plain string, iterable of strings, or callable "
-                                "returning either of these, not {}".format(ret.__class__.__name__))
+                raise TypeError(
+                    "command_suffix must be plain string, iterable of strings, or callable "
+                    "returning either of these, not {}".format(ret.__class__.__name__)
+                )
 
             if not ret:
                 raise ValueError("Iterable command_prefix must contain at least one suffix")
@@ -141,13 +144,17 @@ class BotBase(commands.bot.BotBase):
                         invoked_prefix = discord.utils.find(view.skip_string, prefix)
                 except TypeError:
                     if not isinstance(prefix, list):
-                        raise TypeError("get_prefix must return either a string or a list of string, "
-                                        "not {}".format(prefix.__class__.__name__))
+                        raise TypeError(
+                            "get_prefix must return either a string or a list of string, "
+                            "not {}".format(prefix.__class__.__name__)
+                        )
 
                     for value in prefix:
                         if not isinstance(value, str):
-                            raise TypeError("Iterable command_prefix or list returned from get_prefix must "
-                                            "contain only strings, not {}".format(value.__class__.__name__))
+                            raise TypeError(
+                                "Iterable command_prefix or list returned from get_prefix must "
+                                "contain only strings, not {}".format(value.__class__.__name__)
+                            )
 
                     raise
         else:
@@ -163,7 +170,7 @@ class BotBase(commands.bot.BotBase):
                         return ctx
 
                     for suf in invoked_suffixes:
-                        invoker = view.get_word()[:-len(suf)]
+                        invoker = view.get_word()[: -len(suf)]
                         command = self.all_commands.get(invoker)
                         if command is not None:
                             view.undo()
@@ -174,13 +181,17 @@ class BotBase(commands.bot.BotBase):
 
                 except TypeError:
                     if not isinstance(suffix, list):
-                        raise TypeError("get_suffix must return either a string or a list of string, "
-                                        "not {}".format(suffix.__class__.__name__))
+                        raise TypeError(
+                            "get_suffix must return either a string or a list of string, "
+                            "not {}".format(suffix.__class__.__name__)
+                        )
 
                     for value in suffix:
                         if not isinstance(value, str):
-                            raise TypeError("Iterable command_suffix or list returned from get_suffix must "
-                                            "contain only strings, not {}".format(value.__class__.__name__))
+                            raise TypeError(
+                                "Iterable command_suffix or list returned from get_suffix must "
+                                "contain only strings, not {}".format(value.__class__.__name__)
+                            )
 
                     raise
 
@@ -194,11 +205,12 @@ class BotBase(commands.bot.BotBase):
             except NameError:
                 pass
         else:
-            invoker = invoker[:-len(invoked_suffix)]
+            invoker = invoker[: -len(invoked_suffix)]
 
         ctx.invoked_with = invoker
         ctx.command = self.all_commands.get(invoker)
         return ctx
+
 
 commands.bot.BotBase = BotBase
 commands.Context = Context

@@ -17,7 +17,9 @@ def guild_jump_url(self):
 
     return "https://discord.com/channels/{0.id}".format(self)
 
+
 discord.Guild.jump_url = guild_jump_url
+
 
 @property
 def messageable_jump_url(self):
@@ -34,5 +36,6 @@ def messageable_jump_url(self):
     guild_id = self.guild.id if isinstance(self, discord.abc.GuildChannel) else "@me"
 
     return "https://discord.com/channels/{0}/{1}".format(guild_id, channel_id)
+
 
 discord.abc.Messageable.jump_url = messageable_jump_url
