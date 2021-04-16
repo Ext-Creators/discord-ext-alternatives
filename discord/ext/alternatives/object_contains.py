@@ -106,7 +106,7 @@ def _CategoryChannel__contains__(self, item):
 CategoryChannel.__contains__ = _CategoryChannel__contains__
 
 
-def _DMChannel__contains_(self, item):
+def _DMChannel__contains__(self, item):
     if hasattr(item, 'channel'):
         return item.channel == self
 
