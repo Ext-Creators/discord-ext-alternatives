@@ -84,10 +84,8 @@ TextChannel.__contains__ = _TextChannel__contains__
 
 
 def _VocalGuildChannel__contains__(self, item):
-    if isinstance(item, BaseUser):
-        for user_id, state in self.guild._voice_states.items():
-            if state.channel and state.channel.id == self.id and item.id == user_id:
-                return True
+    if isinstance(item, BaseUser) and item.id in self.voice_states:
+        return True
 
     return False
 
