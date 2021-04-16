@@ -54,6 +54,7 @@ _CONVERTERS = {
 
 _CONVERTERS.update({b: b for b in _BUILTINS})
 
+
 class _ConverterDict(dict):
     """An easy way to register converters for classes.
 
@@ -67,7 +68,7 @@ class _ConverterDict(dict):
     def __setitem__(self, k, v):
         if not (isinstance(v, FunctionType) or issubclass(v, (*_BUILTINS, converter.Converter))):
             raise TypeError(
-                'Excepted value of type \'Converter\' or built-in, received %r' % v.__name__
+                "Excepted value of type 'Converter' or built-in, received %r" % v.__name__
             )
         super().__setitem__(k, v)
 

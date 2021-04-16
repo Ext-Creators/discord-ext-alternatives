@@ -82,7 +82,7 @@ class DictStringView(_view.StringView):
             if is_quoted and current == close_quote:
                 next_char = self.get()
                 # all this for that
-                valid_eof = not next_char or next_char.isspace() or next_char == '='
+                valid_eof = not next_char or next_char.isspace() or next_char == "="
                 if not valid_eof:
                     raise _view.InvalidEndOfQuotedStringError(next_char)
 

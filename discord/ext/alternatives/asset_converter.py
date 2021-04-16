@@ -40,8 +40,9 @@ converter.AssetConverter = _AssetConverter
 _ALL[Asset] = _AssetConverter
 
 Asset.__str__ = (
-    lambda s: '' if s._url is None else (s._url if s._url.startswith('http') else s.BASE + s._url)
+    lambda s: "" if s._url is None else (s._url if s._url.startswith("http") else s.BASE + s._url)
 )
+
 
 async def _read(self):
     if not self._url:
@@ -68,12 +69,12 @@ def _transform(self, ctx, param):
                 param.name,
                 param.kind,
                 default=default,
-                annotation=typing.Optional[param.annotation]
+                annotation=typing.Optional[param.annotation],
             )
         else:
             default = Asset(ctx.bot._connection, "")
             param = Parameter(param.name, param.kind, default=default, annotation=param.annotation)
-    
+
     return _old_transform(self, ctx, param)
 
 

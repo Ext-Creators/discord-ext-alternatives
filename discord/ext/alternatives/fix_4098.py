@@ -73,7 +73,7 @@ async def _edit(self, options, reason):
                 await client.wait_for(
                     "guild_channel_update",
                     check=lambda b, a: b.id == a.id and b.id == self.id,
-                    timeout=2
+                    timeout=2,
                 )
                 return
             except asyncio.TimeoutError:
