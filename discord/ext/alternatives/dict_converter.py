@@ -20,7 +20,6 @@ async def ban(ctx, **users_reasons_mapping: typing.Dict[discord.Member, str]):
 ```
 """
 
-import inspect
 from typing import Dict
 
 import discord

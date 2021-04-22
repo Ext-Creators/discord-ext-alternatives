@@ -36,7 +36,6 @@ else:
 
 from discord.guild import Guild
 from discord.member import Member
-from discord.message import Message
 from discord.role import Role
 from discord.user import User, BaseUser
 
