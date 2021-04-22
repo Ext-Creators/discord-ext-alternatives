@@ -29,13 +29,10 @@ member in role
 import discord
 from discord.channel import CategoryChannel, DMChannel, TextChannel
 
-if discord.version_info < (1, 7, 0):
-    from discord.channel import VoiceChannel as VocalGuildChannel
-else:
-    from discord.channel import VocalGuildChannel
-
+from discord.channel import VocalGuildChannel
 from discord.guild import Guild
 from discord.member import Member
+from discord.message import Message
 from discord.role import Role
 from discord.user import User, BaseUser
 

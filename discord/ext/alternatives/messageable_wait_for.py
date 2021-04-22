@@ -1,3 +1,5 @@
+from discord.abc import Messageable
+from discord.message import Message
 import discord
 from discord.ext import commands
 
