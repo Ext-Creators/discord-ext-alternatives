@@ -1,13 +1,3 @@
-"""An experiment to allow for webhooks to change channels.
-
-Example:
-```py
-webhook = await ctx.bot.fetch_webhook(id)
-channel = ctx.guild.text_channels[1]
-
-await webhook.move_to(channel=channel)
-```
-"""
 from discord import utils, errors, webhook, TextChannel
 import asyncio
 import json
