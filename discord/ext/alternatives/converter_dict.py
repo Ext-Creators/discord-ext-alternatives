@@ -85,21 +85,17 @@ commands.bot.BotBase.converters = _GLOBAL_CONVERTER_DICT
 if discord.version_info < (2, 0, 0):
     _old_actual_conversion = Command._actual_conversion
 
-
     async def _actual_conversion(self, ctx, converter, argument, param):
         converter = _GLOBAL_CONVERTER_DICT.get(converter, converter)
         return await _old_actual_conversion(self, ctx, converter, argument, param)
-
 
     Command._actual_conversion = _actual_conversion
 
 else:
     _old_actual_conversion = converter._actual_conversion
 
-
     async def _actual_conversion(ctx, converter, argument, param):
         converter = _GLOBAL_CONVERTER_DICT.get(converter, converter)
         return await _old_actual_conversion(ctx, converter, argument, param)
-
 
     converter._actual_conversion = _actual_conversion

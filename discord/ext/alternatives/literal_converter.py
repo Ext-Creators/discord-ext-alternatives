@@ -7,7 +7,6 @@ if discord.version_info < (2, 0, 0):
 
     _old_actual_conversion = Command._actual_conversion
 
-
     async def _actual_conversion(self, ctx, converter, argument, param):
         origin = get_origin(converter)
 
@@ -26,6 +25,5 @@ if discord.version_info < (2, 0, 0):
                 raise ConversionError("Literal contains multiple conflicting types.")
 
         return await _old_actual_conversion(self, ctx, converter, argument, param)
-
 
     Command._actual_conversion = _actual_conversion
