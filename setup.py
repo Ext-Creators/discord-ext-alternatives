@@ -65,7 +65,6 @@ setuptools.setup(
     name="discord-ext-alternatives",
     packages=packages,
     project_urls=project_urls,
-    python_requires=">=3.8",
     url="https://github.com/Ext-Creators/discord-ext-alternatives",
     version=version,
 )
